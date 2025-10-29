@@ -1,0 +1,62 @@
+//colore BLU come background per la sezione HERO
+$hero-bg-color: #1e90ff;
+
+$btn-bg-colors: ('plum': #dda0dd, 
+                'yellow': #ffff00, 
+                'wheat': #f5deb3,
+                );
+                
+@each $name, $value in $btn-bg-colors{
+    .btn-#{$name} {
+        margin: 0 1em;
+        padding:1em;
+        font-size:0.75em;
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        background-color:$value;
+    }
+}
+
+@mixin spacing($spacing-mode:space-between) {
+    display: flex;
+    justify-content: $spacing-mode;
+}
+
+@mixin btn-color($btn-bg-color: none){
+    background-color: $btn-bg-color;
+}
+
+#nav-bar{
+    padding: 1em 0;
+    @include spacing(space-between);
+    align-items: center;
+}
+
+//rimuove i pallini dalle liste nonordinate
+ul{
+    li{ 
+        list-style-type: none;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        margin: 0 0.5em;
+    }
+    @include spacing(space-between);
+}
+
+header {
+    background-color:$hero-bg-color;
+}
+
+main{
+    section{
+        background-color: $hero-bg-color;
+    }
+}
+
+#ctn-hero{
+    background-color: $hero-bg-color;
+    @include spacing(space-between)
+}

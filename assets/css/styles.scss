@@ -1,21 +1,81 @@
-//colore BLU come background per la sezione HERO
-$hero-bg-color: #1e90ff;
 
-$btn-bg-colors: ('plum': #dda0dd, 
-                'yellow': #ffff00, 
-                'wheat': #f5deb3,
-                );
-                
+$hero-bg-color: #640fc5;
+
+$text-color: #f4f4f4;
+
+$title-color:#28064f;
+
+$text-sm: 0.75em;
+
+$text-lg: 1.5em;
+
+$text-giga: 4em;
+
+//servono per i bg dei button
+$btn-bg-colors: ('color-1': #0e6cff, 
+                 'color-2': #ff8700, 
+                 'color-3': #4caf50,
+);
+
+//servono per l'each che genera gli "spacing"
+//INIZIO
+$margins: (
+    small: 0.5em,
+    normal: 0.75em,
+    medium: 1em,
+    large: 1.5em,
+    xl: 2em,
+    xxl: 4em,
+);
+
+$blocks: (inl, bl0,);
+
+$spacings: (marg, padd);
+//FINE
+
+//genera i bottoni con i diversi colori
 @each $name, $value in $btn-bg-colors{
     .btn-#{$name} {
-        margin: 0 1em;
-        padding:1em;
-        font-size:0.75em;
-        color: #ffffff;
+        margin: 1em 1em 0 0;
+        padding:1.5em 2em;
+        font-size: $text-sm;
         border: none;
-        border-radius: 10px;
+        border-radius: 4px;
         background-color:$value;
+        a {
+            text-decoration-line: none;
+            color: $text-color;
+        }
     }
+}
+
+//genera le classi per tutti gli spacing
+@each $name, $value in $margins{
+    @each $display-value in $blocks{
+        @each $space-type in $spacings{
+            .#{$space-type}-#{$display-value}-#{$name} {
+                display: $display-value;
+                padding: $value;
+            }
+        }
+    }
+}
+
+// dà il font al titolo, lo rende più grande e gli dà il colore
+@mixin title-big{
+    font: {
+        size: $text-giga;
+        family: "Montserrat", sans-serif;
+    }
+    color:$title-color;
+    margin-bottom: 0;
+}
+
+//aggiunge le ombre
+@mixin floating($border: none, $radius: 4px ,$shadow: 1px 1px 8px 4px rgba(175, 175, 175, 0.822)){
+        border: $border;
+        border-radius: 10px;
+        box-shadow: $shadow;
 }
 
 @mixin spacing($spacing-mode:space-between) {
@@ -23,12 +83,9 @@ $btn-bg-colors: ('plum': #dda0dd,
     justify-content: $spacing-mode;
 }
 
-@mixin btn-color($btn-bg-color: none){
-    background-color: $btn-bg-color;
-}
-
 #nav-bar{
-    padding: 1em 0;
+    padding: 6em;
+    padding-top: 2em;
     @include spacing(space-between);
     align-items: center;
 }
@@ -39,15 +96,11 @@ ul{
         list-style-type: none;
         a{
             text-decoration: none;
-            color: black;
+            color: $text-color;
         }
         margin: 0 0.5em;
     }
     @include spacing(space-between);
-}
-
-header {
-    background-color:$hero-bg-color;
 }
 
 main{
@@ -57,6 +110,46 @@ main{
 }
 
 #ctn-hero{
+    padding-left: 6em;
+    padding-bottom: 8em;
+    margin-bottom: 10em;
     background-color: $hero-bg-color;
-    @include spacing(space-between)
+    @include spacing(space-between);
+     #image-overlay{
+        position: relative;
+            div {
+                position: absolute;
+                top: 100px;
+                right: 80px;
+                img{
+                    @include floating(2px solid rgb(50, 149, 241), 10px, 0px 0px 6px 6px rgba(175, 175, 175, 0.822))
+                }
+            }  
+    }
+}
+
+#text-ctn{
+    width: 40%;
+    h1{
+        @include title-big();
+    }
+    p{  
+        font-size: $text-lg;
+        color: $text-color;
+        margin-top: 0;
+    }
+}
+
+#ctn{
+    margin-top: 0em;
+    background-color: none;
+    @include spacing(space-between);
+    flex-wrap: 3;
+}
+
+.card{
+    margin: 0 0.5em;
+    img{
+        @include floating(none, 4px);
+    }
 }

@@ -5,10 +5,24 @@
   border: none;
   border-radius: 4px;
   background-color: #0e6cff;
+  animation-name: btn-appear;
+  animation-duration: 4s;
+  animation-delay: 8.2s;
+  animation-fill-mode: backwards;
 }
 .btn-color-1 a {
   text-decoration-line: none;
   color: #f4f4f4;
+}
+@keyframes btn-appear {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 .btn-color-2 {
@@ -18,10 +32,24 @@
   border: none;
   border-radius: 4px;
   background-color: #ff8700;
+  animation-name: btn-appear;
+  animation-duration: 4s;
+  animation-delay: 9.4s;
+  animation-fill-mode: backwards;
 }
 .btn-color-2 a {
   text-decoration-line: none;
   color: #f4f4f4;
+}
+@keyframes btn-appear {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 .btn-color-3 {
@@ -31,10 +59,24 @@
   border: none;
   border-radius: 4px;
   background-color: #4caf50;
+  animation-name: btn-appear;
+  animation-duration: 4s;
+  animation-delay: 10.6s;
+  animation-fill-mode: backwards;
 }
 .btn-color-3 a {
   text-decoration-line: none;
   color: #f4f4f4;
+}
+@keyframes btn-appear {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 .marg-inl-small {
@@ -212,11 +254,39 @@ main section {
   font-family: "Montserrat", sans-serif;
   color: #28064f;
   margin-bottom: 0;
+  animation-name: title-appear;
+  animation-duration: 6s;
+  animation-delay: 0.5s;
+  animation-fill-mode: backwards;
+}
+@keyframes title-appear {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 #text-ctn p {
   font-size: 1.5em;
   color: #f4f4f4;
   margin-top: 0;
+  animation-name: subu-text;
+  animation-duration: 4s;
+  animation-delay: 5s;
+  animation-fill-mode: backwards;
+}
+@keyframes subu-text {
+  from {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
 #ctn {
@@ -234,4 +304,21 @@ main section {
   border: none;
   border-radius: 10px;
   box-shadow: 1px 1px 8px 4px rgba(175, 175, 175, 0.822);
+}
+
+#image-overlay .card {
+  animation-name: subu-text;
+  animation-duration: 8s;
+  animation-delay: 15s;
+  animation-fill-mode: backwards;
+}
+@keyframes subu-text {
+  from {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=styles.css.map */

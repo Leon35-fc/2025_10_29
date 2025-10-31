@@ -1,3 +1,5 @@
+@use 'sass:list';
+@use 'sass:map';
 
 $hero-bg-color: #640fc5;
 
@@ -31,7 +33,27 @@ $margins: (
 $blocks: (inl, bl0,);
 
 $spacings: (marg, padd);
+
 //FINE
+
+@mixin anim-appear($name: come-in, $anim-px-start: -40px, $anim-px-end: 0px, $time: 5s, $delay-t: 0s,){
+    animation: {
+        name: $name;
+        duration: $time;
+        delay: $delay-t;
+        fill-mode: backwards;
+    }
+    @keyframes #{$name}{
+       from { transform: translateY($anim-px-start);
+              opacity: 0;
+        }
+       to { transform: translateY($anim-px-end);
+            opacity: 1;
+        }
+    }
+}
+
+//ANIMATIONS
 
 //genera i bottoni con i diversi colori
 @each $name, $value in $btn-bg-colors{
@@ -46,6 +68,8 @@ $spacings: (marg, padd);
             text-decoration-line: none;
             color: $text-color;
         }
+
+        @include anim-appear(btn-appear, $time: 4s, $delay-t: #{(list.index(map.get($btn-bg-colors, 'color-1') map.get($btn-bg-colors, 'color-2') map.get($btn-bg-colors, 'color-3'), $value)*1.2 + 7)}#{s});
     }
 }
 
@@ -69,6 +93,9 @@ $spacings: (marg, padd);
     }
     color:$title-color;
     margin-bottom: 0;
+
+    @include anim-appear(title-appear, $time: 6s, $delay-t: 0.5s);
+
 }
 
 //aggiunge le ombre
@@ -91,14 +118,14 @@ $spacings: (marg, padd);
 }
 
 //rimuove i pallini dalle liste nonordinate
-ul{
+ul{ 
     li{ 
         list-style-type: none;
+        margin: 0 0.5em;
         a{
             text-decoration: none;
             color: $text-color;
         }
-        margin: 0 0.5em;
     }
     @include spacing(space-between);
 }
@@ -137,6 +164,7 @@ main{
         font-size: $text-lg;
         color: $text-color;
         margin-top: 0;
+        @include anim-appear(subu-text, -30%, 0%, 4s , 5s)
     }
 }
 
@@ -151,5 +179,11 @@ main{
     margin: 0 0.5em;
     img{
         @include floating(none, 4px);
+    }
+}
+
+#image-overlay{
+    .card{
+        @include anim-appear(subu-text, -30%, 0%, 8s , 15s)
     }
 }
